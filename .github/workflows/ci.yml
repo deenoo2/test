@@ -32,3 +32,9 @@ jobs:
         with:
           name: pytest-results
           path: test-results/results.xml
+
+      - name: Deploy to Production (simulated)
+        if: github.ref == 'refs/heads/main'
+        run: |
+          echo "🚀 Starting deployment..."
+          echo "Code successfully deployed at $(date)"
