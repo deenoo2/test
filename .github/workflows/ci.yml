@@ -38,3 +38,14 @@ jobs:
         run: |
           echo "🚀 Starting deployment..."
           echo "Code successfully deployed at $(date)"
+      
+      - name: Mirror to deenoc/test
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config --global user.name "deenoc"
+          git config --global user.email "deenoo.g@gmail.com"
+
+          git clone --bare https://github.com/deenoo2/test.git mirror-repo
+          cd mirror-repo
+
+          git push --mirror https://deenoc:${{ secrets.FORK_PUSH_TOKEN }}@github.com/deenoc/test.git
