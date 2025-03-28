@@ -34,9 +34,11 @@ jobs:
           path: test-results/results.xml
 
       - name: Publish test results to GitHub
-        uses: actions/upload-test-results@v2
+        uses: dorny/test-reporter@v1
         with:
-          files: test-results/results.xml
+          name: Pytest
+          path: test-results/results.xml
+          reporter: junit
 
       - name: Deploy to Production (simulated)
         if: github.ref == 'refs/heads/main'
