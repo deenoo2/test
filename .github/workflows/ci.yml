@@ -33,6 +33,11 @@ jobs:
           name: pytest-results
           path: test-results/results.xml
 
+      - name: Publish test results to GitHub
+          uses: actions/upload-test-results@v2
+          with:
+            files: test-results/results.xml
+
       - name: Deploy to Production (simulated)
         if: github.ref == 'refs/heads/main'
         run: |
