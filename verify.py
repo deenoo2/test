@@ -12,3 +12,5 @@ if validate_username(username):
     print("Valid username.")
 else:
     print("Invalid username.")
+    # Dinu - added next line
+    print("Use only A-Z for the first character and A-z/0-9 for the name, no special characters are allowed.") 
